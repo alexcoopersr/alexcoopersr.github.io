@@ -1,0 +1,4337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Alex Cooper's Portfolio</title>
+<style>
+
+/* =========================================================
+   ALEX COOPER — PERSONAL PORTFOLIO
+   HOMEPAGE STYLES
+   ========================================================= */
+
+
+/* =========================================================
+   ROOT / PAGE
+   ========================================================= */
+
+html {
+    margin: 0;
+    padding: 0;
+
+    scroll-behavior: smooth;
+
+    background: #07080d;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    min-height: 100vh;
+
+    overflow-x: hidden;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: #ffffff;
+
+    background:
+        #07080d;
+}
+
+
+/* =========================================================
+   GLOBAL LINKS
+   ========================================================= */
+
+a {
+    color: inherit;
+}
+
+
+/* =========================================================
+   MAIN PAGE BACKGROUND
+   ========================================================= */
+
+.container {
+
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    box-sizing: border-box;
+
+    padding:
+        55px
+        7%
+        100px;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(
+            circle at 72% 5%,
+            rgba(70, 80, 170, 0.16),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 15% 30%,
+            rgba(90, 70, 160, 0.10),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 80% 65%,
+            rgba(50, 80, 150, 0.08),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            180deg,
+            #0c0d13 0%,
+            #08090e 45%,
+            #06070b 100%
+        );
+
+    background-attachment: fixed;
+}
+
+
+/* =========================================================
+   BACKGROUND GLOW
+   ========================================================= */
+
+.container::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -250px;
+    left: 50%;
+
+    width: 750px;
+    height: 750px;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(105, 115, 220, 0.10),
+            transparent 65%
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   BACKGROUND GRID
+   ========================================================= */
+
+.container::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.12;
+
+    background-image:
+
+        linear-gradient(
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        80px 80px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black 0%,
+            transparent 85%
+        );
+}
+
+
+/* =========================================================
+   PAGE CONTENT
+   ========================================================= */
+
+.page-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    max-width: 1280px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.sidebar-toggle {
+
+    position: fixed;
+
+    top: 28px;
+    left: 28px;
+
+    z-index: 1500;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 46px;
+    height: 46px;
+
+    box-sizing: border-box;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.10);
+
+    border-radius: 10px;
+
+    background:
+        rgba(14,15,22,0.82);
+
+    backdrop-filter:
+        blur(16px);
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 30px
+        rgba(0,0,0,0.30);
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.sidebar-toggle:hover {
+
+    background:
+        rgba(45,48,75,0.9);
+
+    transform:
+        translateY(-2px);
+}
+
+
+.sidebar-toggle span {
+
+    position: relative;
+
+    display: block;
+
+    width: 18px;
+    height: 2px;
+
+    background: #ffffff;
+
+    border-radius: 5px;
+}
+
+
+.sidebar-toggle span::before,
+.sidebar-toggle span::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    width: 18px;
+    height: 2px;
+
+    background: #ffffff;
+
+    border-radius: 5px;
+}
+
+
+.sidebar-toggle span::before {
+    top: -6px;
+}
+
+
+.sidebar-toggle span::after {
+    top: 6px;
+}
+
+
+/* =========================================================
+   SIDEBAR CHECKBOX
+   ========================================================= */
+
+.sidebar-checkbox {
+
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   SIDEBAR OVERLAY
+   ========================================================= */
+
+.sidebar-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1300;
+
+    background:
+        rgba(0,0,0,0.65);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    backdrop-filter:
+        blur(4px);
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.sidebar {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    z-index: 1400;
+
+    width: 300px;
+
+    height: 100vh;
+
+    box-sizing: border-box;
+
+    padding:
+        35px
+        25px;
+
+    background:
+        rgba(10,11,17,0.96);
+
+    border-right:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    box-shadow:
+        20px 0 60px
+        rgba(0,0,0,0.35);
+
+    backdrop-filter:
+        blur(25px);
+
+    transform:
+        translateX(-100%);
+
+    transition:
+        transform 0.35s ease;
+}
+
+
+/* =========================================================
+   SIDEBAR OPEN
+   ========================================================= */
+
+.sidebar-checkbox:checked
+~ .sidebar {
+
+    transform:
+        translateX(0);
+}
+
+
+.sidebar-checkbox:checked
+~ .sidebar-overlay {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+
+/* =========================================================
+   SIDEBAR HEADER
+   ========================================================= */
+
+.sidebar-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 50px;
+}
+
+
+.sidebar-brand {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+.sidebar-brand strong {
+
+    color: #ffffff;
+
+    font-size: 17px;
+
+    letter-spacing: -0.3px;
+}
+
+
+.sidebar-brand span {
+
+    color:
+        rgba(255,255,255,0.38);
+
+    font-size: 9px;
+
+    letter-spacing: 1.4px;
+
+    text-transform: uppercase;
+}
+
+
+.sidebar-close {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    border-radius: 8px;
+
+    color:
+        rgba(255,255,255,0.55);
+
+    background:
+        rgba(255,255,255,0.04);
+
+    cursor: pointer;
+
+    font-size: 22px;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.sidebar-close:hover {
+
+    color: #ffffff;
+
+    background:
+        rgba(255,255,255,0.09);
+}
+
+
+/* =========================================================
+   SIDEBAR NAVIGATION
+   ========================================================= */
+
+.sidebar-nav {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+
+.sidebar-section-label {
+
+    margin:
+        10px
+        0
+        10px
+        12px;
+
+    color:
+        rgba(255,255,255,0.30);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.4px;
+
+    text-transform: uppercase;
+}
+
+
+.sidebar-link {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding:
+        13px
+        12px;
+
+    border-radius: 8px;
+
+    color:
+        rgba(255,255,255,0.62);
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.sidebar-link::after {
+
+    content: "→";
+
+    opacity: 0;
+
+    transform:
+        translateX(-5px);
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.sidebar-link:hover {
+
+    color: #ffffff;
+
+    background:
+        rgba(255,255,255,0.055);
+
+    transform:
+        translateX(3px);
+}
+
+
+.sidebar-link:hover::after {
+
+    opacity: 0.6;
+
+    transform:
+        translateX(0);
+}
+
+
+.sidebar-link.active {
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(85,95,190,0.25),
+            rgba(85,95,190,0.04)
+        );
+
+    border-left:
+        2px solid
+        rgba(120,130,230,0.8);
+}
+
+
+/* =========================================================
+   SIDEBAR FOOTER
+   ========================================================= */
+
+.sidebar-footer {
+
+    position: absolute;
+
+    bottom: 30px;
+    left: 25px;
+    right: 25px;
+
+    padding-top: 20px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.07);
+}
+
+
+.sidebar-footer p {
+
+    margin: 0;
+
+    color:
+        rgba(255,255,255,0.30);
+
+    font-size: 10px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   HERO / INTRO
+   ========================================================= */
+
+.hero {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        260px;
+
+    align-items: center;
+
+    gap: 70px;
+
+    min-height: 520px;
+
+    padding:
+        45px
+        0
+        75px;
+}
+
+
+/* =========================================================
+   HERO TEXT
+   ========================================================= */
+
+.hero-label {
+
+    margin-bottom: 18px;
+
+    color:
+        #8b96e8;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+}
+
+
+.hero h1 {
+
+    margin: 0;
+
+    max-width: 850px;
+
+    color: #ffffff;
+
+    font-size:
+        clamp(48px, 7vw, 82px);
+
+    line-height: 0.98;
+
+    letter-spacing:
+        -4px;
+
+    font-weight: 700;
+}
+
+
+.hero h1 span {
+
+    color:
+        rgba(255,255,255,0.38);
+}
+
+
+.hero-description {
+
+    max-width: 700px;
+
+    margin:
+        28px 0 0;
+
+    color:
+        rgba(225,225,225,0.55);
+
+    font-size: 16px;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   HERO LINKS
+   ========================================================= */
+
+.hero-actions {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 32px;
+}
+
+
+.hero-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 42px;
+
+    padding:
+        0 18px;
+
+    box-sizing: border-box;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.10);
+
+    border-radius: 7px;
+
+    background:
+        rgba(255,255,255,0.045);
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+.hero-button:hover {
+
+    background:
+        rgba(85,95,190,0.30);
+
+    border-color:
+        rgba(110,120,220,0.30);
+
+    transform:
+        translateY(-2px);
+}
+
+
+.hero-button.primary {
+
+    background:
+        linear-gradient(
+            135deg,
+            #5968c7,
+            #747ddd
+        );
+
+    border-color:
+        transparent;
+}
+
+
+/* =========================================================
+   HERO PROFILE
+   ========================================================= */
+
+.hero-profile {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+}
+
+
+.hero-photo-wrapper {
+
+    position: relative;
+
+    width: 220px;
+    height: 220px;
+
+    margin-bottom: 22px;
+}
+
+
+.hero-photo-wrapper::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -12px;
+
+    border:
+        1px solid
+        rgba(125,135,230,0.18);
+
+    border-radius: 50%;
+}
+
+
+.hero-photo-wrapper::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -25px;
+
+    border:
+        1px solid
+        rgba(125,135,230,0.07);
+
+    border-radius: 50%;
+}
+
+
+.headshot {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 220px;
+    height: 220px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.15);
+
+    box-shadow:
+        0 25px 70px
+        rgba(0,0,0,0.45);
+}
+
+
+.hero-profile-name {
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+
+.hero-profile-role {
+
+    margin-top: 6px;
+
+    color:
+        rgba(255,255,255,0.38);
+
+    font-size: 10px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.section {
+
+    position: relative;
+
+    margin-top: 35px;
+
+    padding:
+        65px
+        0;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.06);
+}
+
+
+.section-heading {
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    margin-bottom: 40px;
+}
+
+
+.section-label {
+
+    margin-bottom: 10px;
+
+    color:
+        #818ce1;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.8px;
+
+    text-transform: uppercase;
+}
+
+
+.section-heading h2 {
+
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size:
+        clamp(28px, 4vw, 42px);
+
+    letter-spacing: -1.5px;
+}
+
+
+.section-heading p {
+
+    max-width: 460px;
+
+    margin: 0;
+
+    color:
+        rgba(225,225,225,0.42);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   ABOUT GRID
+   ========================================================= */
+
+.about-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.35fr)
+        minmax(250px, 0.65fr);
+
+    gap: 55px;
+}
+
+
+.about-copy p {
+
+    margin:
+        0 0 20px;
+
+    color:
+        rgba(225,225,225,0.58);
+
+    font-size: 14px;
+
+    line-height: 1.85;
+}
+
+
+.about-copy p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   SKILLS PANEL
+   ========================================================= */
+
+.focus-panel {
+
+    padding:
+        28px;
+
+    background:
+        rgba(255,255,255,0.025);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.07);
+
+    border-radius: 10px;
+}
+
+
+.focus-panel-title {
+
+    margin-bottom: 22px;
+
+    color:
+        rgba(255,255,255,0.35);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+}
+
+
+.focus-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+}
+
+
+.focus-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    color:
+        rgba(255,255,255,0.65);
+
+    font-size: 12px;
+}
+
+
+.focus-dot {
+
+    width: 5px;
+    height: 5px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background:
+        #7d88e0;
+
+    box-shadow:
+        0 0 12px
+        rgba(125,136,224,0.6);
+}
+
+
+/* =========================================================
+   TIMELINE
+   ========================================================= */
+
+.timeline {
+
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    margin-left: 10px;
+}
+
+
+.timeline::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 10px;
+    bottom: 10px;
+
+    left: 7px;
+
+    width: 1px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(125,136,224,0.55),
+            rgba(255,255,255,0.06)
+        );
+}
+
+
+.timeline-item {
+
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        24px
+        170px
+        minmax(0, 1fr);
+
+    gap: 25px;
+
+    padding:
+        0 0 45px;
+}
+
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+
+.timeline-marker {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 15px;
+    height: 15px;
+
+    margin-top: 3px;
+
+    box-sizing: border-box;
+
+    border:
+        3px solid
+        #0a0b11;
+
+    border-radius: 50%;
+
+    background:
+        #7f89df;
+
+    box-shadow:
+        0 0 0 1px
+        rgba(127,137,223,0.35),
+
+        0 0 15px
+        rgba(127,137,223,0.35);
+}
+
+
+.timeline-date {
+
+    padding-top: 1px;
+
+    color:
+        rgba(255,255,255,0.35);
+
+    font-size: 10px;
+
+    line-height: 1.5;
+
+    letter-spacing: 0.2px;
+}
+
+
+.timeline-content {
+
+    max-width: 650px;
+}
+
+
+.timeline-content h3 {
+
+    margin:
+        0 0 5px;
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+    letter-spacing: -0.2px;
+}
+
+
+.timeline-company {
+
+    margin-bottom: 12px;
+
+    color:
+        #808bdd;
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+
+.timeline-content p {
+
+    margin: 0;
+
+    color:
+        rgba(225,225,225,0.47);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+.timeline-current {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    margin-left: 8px;
+
+    padding:
+        3px 7px;
+
+    border:
+        1px solid
+        rgba(105,220,160,0.20);
+
+    border-radius: 20px;
+
+    color:
+        rgba(140,220,175,0.75);
+
+    background:
+        rgba(70,180,125,0.07);
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.6px;
+
+    text-transform: uppercase;
+}
+
+
+.timeline-current::before {
+
+    content: "";
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background:
+        #71d39a;
+
+    box-shadow:
+        0 0 8px
+        rgba(113,211,154,0.6);
+}
+
+
+/* =========================================================
+   EDUCATION
+   ========================================================= */
+
+.education-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+}
+
+
+.education-card {
+
+    min-height: 170px;
+
+    box-sizing: border-box;
+
+    padding: 25px;
+
+    background:
+        rgba(255,255,255,0.025);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.07);
+
+    border-radius: 10px;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+.education-card:hover {
+
+    transform:
+        translateY(-4px);
+
+    background:
+        rgba(255,255,255,0.04);
+
+    border-color:
+        rgba(120,130,220,0.18);
+}
+
+
+.education-year {
+
+    margin-bottom: 25px;
+
+    color:
+        #7f89df;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+
+.education-card h3 {
+
+    margin:
+        0 0 8px;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    line-height: 1.4;
+}
+
+
+.education-card p {
+
+    margin: 0;
+
+    color:
+        rgba(255,255,255,0.38);
+
+    font-size: 10px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   PROJECT / CAPABILITIES STRIP
+   ========================================================= */
+
+.capability-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 10px;
+}
+
+
+.capability {
+
+    padding:
+        22px;
+
+    min-height: 125px;
+
+    box-sizing: border-box;
+
+    background:
+        rgba(255,255,255,0.022);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.06);
+
+    border-radius: 9px;
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.capability:hover {
+
+    background:
+        rgba(255,255,255,0.04);
+
+    transform:
+        translateY(-3px);
+}
+
+
+.capability-number {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(125,136,224,0.7);
+
+    font-size: 9px;
+
+    font-weight: 700;
+}
+
+
+.capability h3 {
+
+    margin:
+        0 0 7px;
+
+    color: #ffffff;
+
+    font-size: 12px;
+}
+
+
+.capability p {
+
+    margin: 0;
+
+    color:
+        rgba(255,255,255,0.35);
+
+    font-size: 10px;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   RESUME CTA
+   ========================================================= */
+
+.resume-section {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 40px;
+
+    margin-top: 50px;
+
+    padding:
+        30px 35px;
+
+    background:
+        linear-gradient(
+            100deg,
+            rgba(70,80,165,0.16),
+            rgba(255,255,255,0.025)
+        );
+
+    border:
+        1px solid
+        rgba(100,110,210,0.14);
+
+    border-radius: 11px;
+}
+
+
+.resume-section h3 {
+
+    margin:
+        0 0 7px;
+
+    color: #ffffff;
+
+    font-size: 16px;
+}
+
+
+.resume-section p {
+
+    margin: 0;
+
+    color:
+        rgba(255,255,255,0.40);
+
+    font-size: 11px;
+}
+
+
+.resume-actions {
+
+    display: flex;
+
+    flex-shrink: 0;
+
+    gap: 8px;
+}
+
+
+.resume-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    height: 38px;
+
+    padding:
+        0 15px;
+
+    border-radius: 7px;
+
+    text-decoration: none;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    background:
+        #6571cf;
+
+    color: #ffffff;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.resume-button:hover {
+
+    background:
+        #7480dc;
+
+    transform:
+        translateY(-2px);
+}
+
+
+.resume-button.secondary {
+
+    background:
+        rgba(255,255,255,0.05);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+}
+
+
+/* =========================================================
+   FIND ME
+   ========================================================= */
+
+.find-section {
+
+    text-align: center;
+
+    padding-bottom: 80px;
+}
+
+
+.find-section h2 {
+
+    margin:
+        0 0 12px;
+
+    color: #ffffff;
+
+    font-size: 34px;
+
+    letter-spacing: -1px;
+}
+
+
+.find-section > p {
+
+    max-width: 500px;
+
+    margin:
+        0 auto 25px;
+
+    color:
+        rgba(255,255,255,0.40);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+.find-links {
+
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+}
+
+
+.find-link {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 100px;
+
+    height: 38px;
+
+    padding:
+        0 15px;
+
+    box-sizing: border-box;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    border-radius: 7px;
+
+    background:
+        rgba(255,255,255,0.035);
+
+    color:
+        rgba(255,255,255,0.70);
+
+    text-decoration: none;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.find-link:hover {
+
+    background:
+        rgba(80,90,185,0.25);
+
+    color: #ffffff;
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.site-footer {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    max-width: 1280px;
+
+    margin: 0 auto;
+
+    padding:
+        28px 0;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.06);
+
+    color:
+        rgba(255,255,255,0.25);
+
+    font-size: 9px;
+}
+
+
+.site-footer a,
+.footer-contact {
+
+    color:
+        rgba(255,255,255,0.42);
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease;
+}
+
+
+.site-footer a:hover,
+.footer-contact:hover {
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   CONTACT POP-OUT
+   ========================================================= */
+
+.contact-checkbox {
+
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CONTACT OVERLAY
+   ========================================================= */
+
+.contact-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1100;
+
+    background:
+        rgba(0,0,0,0.68);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    backdrop-filter:
+        blur(5px);
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+}
+
+
+/* =========================================================
+   CONTACT PANEL
+   ========================================================= */
+
+.contact-panel {
+
+    position: fixed;
+
+    top: 50%;
+    right: 30px;
+
+    z-index: 1200;
+
+    width: 420px;
+
+    max-width:
+        calc(100vw - 40px);
+
+    box-sizing: border-box;
+
+    padding: 30px;
+
+    background:
+        rgba(12,13,20,0.97);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.10);
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,0.65);
+
+    backdrop-filter:
+        blur(25px);
+
+    transform:
+        translateY(-50%)
+        translateX(40px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        transform 0.35s ease,
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+}
+
+
+/* =========================================================
+   CONTACT OPEN
+   ========================================================= */
+
+.contact-checkbox:checked
+~ .contact-overlay {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+
+.contact-checkbox:checked
+~ .contact-panel {
+
+    transform:
+        translateY(-50%)
+        translateX(0);
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+
+/* =========================================================
+   CONTACT HEADER
+   ========================================================= */
+
+.contact-panel-header {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+
+.contact-label {
+
+    margin-bottom: 8px;
+
+    color:
+        #8792e3;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+}
+
+
+.contact-panel h2 {
+
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 29px;
+
+    letter-spacing: -1px;
+}
+
+
+.contact-close {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    flex-shrink: 0;
+
+    border-radius: 7px;
+
+    color:
+        rgba(255,255,255,0.55);
+
+    background:
+        rgba(255,255,255,0.05);
+
+    cursor: pointer;
+
+    font-size: 22px;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.contact-close:hover {
+
+    color: #ffffff;
+
+    background:
+        rgba(255,255,255,0.10);
+}
+
+
+/* =========================================================
+   CONTACT DESCRIPTION
+   ========================================================= */
+
+.contact-description {
+
+    margin:
+        20px 0 22px;
+
+    color:
+        rgba(225,225,225,0.48);
+
+    font-size: 11px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   CONTACT OPTIONS
+   ========================================================= */
+
+.contact-options {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+.contact-option {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+    padding:
+        13px 15px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.06);
+
+    border-radius: 8px;
+
+    background:
+        rgba(255,255,255,0.035);
+
+    text-decoration: none;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.contact-option:hover {
+
+    background:
+        rgba(75,85,180,0.22);
+
+    transform:
+        translateX(3px);
+}
+
+
+.contact-option strong {
+
+    color: #ffffff;
+
+    font-size: 12px;
+}
+
+
+.contact-option span {
+
+    color:
+        rgba(255,255,255,0.36);
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   CONTACT RESUME
+   ========================================================= */
+
+.contact-resume {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-top: 22px;
+
+    padding-top: 20px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.06);
+}
+
+
+.contact-resume-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+.contact-resume-info strong {
+
+    color: #ffffff;
+
+    font-size: 11px;
+}
+
+
+.contact-resume-info span {
+
+    color:
+        rgba(255,255,255,0.35);
+
+    font-size: 9px;
+}
+
+
+.contact-resume-buttons {
+
+    display: flex;
+
+    gap: 5px;
+}
+
+
+.contact-resume-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    height: 33px;
+
+    padding:
+        0 11px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    border-radius: 6px;
+
+    background:
+        rgba(90,100,200,0.30);
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.contact-resume-button:hover {
+
+    background:
+        rgba(100,110,215,0.50);
+
+    transform:
+        translateY(-2px);
+}
+
+
+.contact-resume-button.secondary {
+
+    background:
+        rgba(255,255,255,0.04);
+}
+
+
+/* =========================================================
+   CERT POP-OUT
+   ========================================================= */
+
+.cert-checkbox {
+
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CERT OVERLAY
+   ========================================================= */
+
+.cert-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1100;
+
+    background:
+        rgba(0,0,0,0.68);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    backdrop-filter:
+        blur(5px);
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+}
+
+
+/* =========================================================
+   CERT PANEL
+   ========================================================= */
+
+.cert-panel {
+
+    position: fixed;
+
+    top: 50%;
+    right: 30px;
+
+    z-index: 1200;
+
+    width: 420px;
+
+    max-width:
+        calc(100vw - 40px);
+
+    box-sizing: border-box;
+
+    padding: 30px;
+
+    background:
+        rgba(12,13,20,0.97);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.10);
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,0.65);
+
+    backdrop-filter:
+        blur(25px);
+
+    transform:
+        translateY(-50%)
+        translateX(40px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        transform 0.35s ease,
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+}
+
+
+/* =========================================================
+   CERT OPEN
+   ========================================================= */
+
+.cert-checkbox:checked
+~ .cert-overlay {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+
+.cert-checkbox:checked
+~ .cert-panel {
+
+    transform:
+        translateY(-50%)
+        translateX(0);
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+
+/* =========================================================
+   CERT HEADER
+   ========================================================= */
+
+.cert-panel-header {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+
+.cert-label {
+
+    margin-bottom: 8px;
+
+    color:
+        #8792e3;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+}
+
+
+.cert-panel h2 {
+
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 29px;
+
+    letter-spacing: -1px;
+}
+
+
+.cert-close {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    flex-shrink: 0;
+
+    border-radius: 7px;
+
+    color:
+        rgba(255,255,255,0.55);
+
+    background:
+        rgba(255,255,255,0.05);
+
+    cursor: pointer;
+
+    font-size: 22px;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.cert-close:hover {
+
+    color: #ffffff;
+
+    background:
+        rgba(255,255,255,0.10);
+}
+
+
+/* =========================================================
+   CERT DESCRIPTION
+   ========================================================= */
+
+.cert-description {
+
+    margin:
+        20px 0 22px;
+
+    color:
+        rgba(225,225,225,0.48);
+
+    font-size: 11px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   CERT OPTIONS
+   ========================================================= */
+
+.cert-options {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+.cert-option {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+    padding:
+        13px 15px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.06);
+
+    border-radius: 8px;
+
+    background:
+        rgba(255,255,255,0.035);
+
+    text-decoration: none;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.cert-option:hover {
+
+    background:
+        rgba(75,85,180,0.22);
+
+    transform:
+        translateX(3px);
+}
+
+
+.cert-option strong {
+
+    color: #ffffff;
+
+    font-size: 12px;
+}
+
+
+.cert-option span {
+
+    color:
+        rgba(255,255,255,0.36);
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   CERT RESUME
+   ========================================================= */
+
+.cert-resume {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-top: 22px;
+
+    padding-top: 20px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.06);
+}
+
+
+.cert-resume-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+.cert-resume-info strong {
+
+    color: #ffffff;
+
+    font-size: 11px;
+}
+
+
+.cert-resume-info span {
+
+    color:
+        rgba(255,255,255,0.35);
+
+    font-size: 9px;
+}
+
+
+.cert-resume-buttons {
+
+    display: flex;
+
+    gap: 5px;
+}
+
+
+.cert-resume-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    height: 33px;
+
+    padding:
+        0 11px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    border-radius: 6px;
+
+    background:
+        rgba(90,100,200,0.30);
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.cert-resume-button:hover {
+
+    background:
+        rgba(100,110,215,0.50);
+
+    transform:
+        translateY(-2px);
+}
+
+
+.cert-resume-button.secondary {
+
+    background:
+        rgba(255,255,255,0.04);
+}
+
+/* =========================================================
+   RESPONSIVE — 1000px
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .container {
+
+        padding-left: 6%;
+        padding-right: 6%;
+    }
+
+
+    .hero {
+
+        grid-template-columns:
+            minmax(0, 1fr)
+            200px;
+
+        gap: 40px;
+    }
+
+
+    .hero-photo-wrapper,
+    .headshot {
+
+        width: 180px;
+        height: 180px;
+    }
+
+
+    .about-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .education-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .capability-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — 750px
+   ========================================================= */
+
+@media (max-width: 750px) {
+
+    .container {
+
+        padding:
+            70px
+            25px
+            60px;
+    }
+
+
+    .hero {
+
+        grid-template-columns:
+            1fr;
+
+        text-align: center;
+
+        padding-top: 35px;
+    }
+
+
+    .hero-profile {
+
+        order: -1;
+    }
+
+
+    .hero-description {
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .hero-actions {
+
+        justify-content: center;
+    }
+
+
+    .section-heading {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+    .timeline-item {
+
+        grid-template-columns:
+            24px
+            minmax(0, 1fr);
+
+        gap: 18px;
+    }
+
+
+    .timeline-date {
+
+        grid-column: 2;
+
+        grid-row: 1;
+
+        padding: 0;
+
+        margin-bottom: -10px;
+    }
+
+
+    .timeline-marker {
+
+        grid-column: 1;
+
+        grid-row: 1 / span 2;
+    }
+
+
+    .timeline-content {
+
+        grid-column: 2;
+
+        grid-row: 2;
+    }
+
+
+    .resume-section {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — 550px
+   ========================================================= */
+
+@media (max-width: 550px) {
+
+    .container {
+
+        padding:
+            70px
+            18px
+            45px;
+    }
+
+
+    .sidebar {
+
+        width: 280px;
+    }
+
+
+    .hero h1 {
+
+        font-size: 48px;
+
+        letter-spacing: -2.5px;
+    }
+
+
+    .hero-description {
+
+        font-size: 13px;
+    }
+
+
+    .hero-photo-wrapper,
+    .headshot {
+
+        width: 160px;
+        height: 160px;
+    }
+
+
+    .education-grid,
+    .capability-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .education-card {
+
+        min-height: auto;
+    }
+
+
+    .resume-actions {
+
+        width: 100%;
+    }
+
+
+    .resume-button {
+
+        flex: 1;
+    }
+
+
+    .contact-panel {
+
+        top: auto;
+        right: 10px;
+        bottom: 10px;
+
+        width:
+            calc(100vw - 20px);
+
+        max-width: none;
+
+        transform:
+            translateY(30px);
+    }
+
+
+    .contact-checkbox:checked
+    ~ .contact-panel {
+
+        transform:
+            translateY(0);
+    }
+
+
+    .contact-resume {
+
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+
+    .contact-resume-buttons {
+
+        width: 100%;
+    }
+
+
+    .contact-resume-button {
+
+        flex: 1;
+    }
+
+
+    .site-footer {
+
+        flex-direction: column;
+
+        text-align: center;
+
+        gap: 10px;
+    }
+}
+</style>
+</head>
+
+
+<title>Alex Cooper | Supply Chain Professional</title>
+
+
+<!-- =========================================================
+     SIDEBAR TOGGLE
+     ========================================================= -->
+
+<input
+    type="checkbox"
+    id="sidebar-toggle"
+    class="sidebar-checkbox"
+>
+
+
+<label
+    for="sidebar-toggle"
+    class="sidebar-toggle"
+    aria-label="Open navigation"
+>
+
+    <span></span>
+
+</label>
+
+
+<!-- =========================================================
+     SIDEBAR OVERLAY
+     ========================================================= -->
+
+<label
+    for="sidebar-toggle"
+    class="sidebar-overlay"
+></label>
+
+
+<!-- =========================================================
+     SIDEBAR
+     ========================================================= -->
+
+<aside class="sidebar">
+
+
+    <div class="sidebar-header">
+
+
+        <div class="sidebar-brand">
+
+            <strong>
+                Alex Cooper
+            </strong>
+
+            <span>
+                Personal Portfolio
+            </span>
+
+        </div>
+
+
+        <label
+            for="sidebar-toggle"
+            class="sidebar-close"
+            aria-label="Close navigation"
+        >
+            ×
+        </label>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+
+        <div class="sidebar-section-label">
+            Portfolio
+        </div>
+
+
+        <a
+            href="index.html"
+            class="sidebar-link active"
+        >
+            Home
+        </a>
+
+
+        
+<label
+    for="cert-toggle"
+    class="sidebar-link"
+>
+    Certificates
+</label>
+
+
+        <div class="sidebar-section-label">
+            Connect
+        </div>
+
+
+        <a
+            href="https://www.linkedin.com/in/amcoopersr/"
+            class="sidebar-link"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            LinkedIn
+        </a>
+
+
+        <label
+            for="contact-toggle"
+            class="sidebar-link"
+        >
+            Contact
+        </label>
+
+
+    </nav>
+
+
+    <div class="sidebar-footer">
+
+        <p>
+            Supply Chain<br>
+            Leadership • Inventory • Analytics
+        </p>
+
+    </div>
+
+
+</aside>
+
+
+<!-- =========================================================
+     PAGE
+     ========================================================= -->
+
+<div class="container">
+
+
+    <main class="page-content">
+
+
+        <!-- =================================================
+             HERO
+             ================================================= -->
+
+        <section class="hero">
+
+
+            <div class="hero-text">
+
+
+                <div class="hero-label">
+                    Supply Chain • Leadership • Inventory • Analytics
+                </div>
+
+
+                <h1>
+                    Building systems
+                    <span>that work beyond the floor.</span>
+                </h1>
+
+
+                <p class="hero-description">
+                    I'm Alex Cooper, a seasoned supply chain professional
+                    experienced in personnel leadership and development,
+                    inventory control/management, and data analytics.
+                </p>
+
+
+                <div class="hero-actions">
+
+
+                    
+
+<input
+    type="checkbox"
+    id="cert-toggle"
+    class="cert-checkbox"
+>
+
+<label
+    for="cert-toggle"
+    class="hero-button"
+>
+    Explore Certificates
+</label>
+
+<label
+    for="cert-toggle"
+    class="cert-overlay"
+></label>
+
+<div class="cert-panel">
+
+    <div class="cert-panel-header">
+
+        <div>
+            <div class="cert-label">
+                Formal Education
+            </div>
+
+            <h2>
+                My Certificates
+            </h2>
+        </div>
+
+        <label
+            for="cert-toggle"
+            class="cert-close"
+        >
+            &times;
+        </label>
+
+    </div>
+
+    <p class="cert-description">
+        Explore my professional certifications
+        and educational qualifications.
+    </p>
+
+    <div class="cert-options">
+
+        <!-- Certificate 1 -->
+
+        <a
+            href="src\UD_Cert_Alex_Cooper.pdf"
+            class="cert-option"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <strong>
+                University of Denver, Frontline Manager Leadership
+            </strong>
+
+            <span>
+                View certificate →
+            </span>
+        </a>
+
+        <!-- Certificate 2 -->
+
+        <a
+            href="src\LinkedIn_Cert_Alex_Cooper.pdf"
+            class="cert-option"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <strong>
+                LinkedIn Learning, Inventory Management Foundations
+            </strong>
+
+            <span>
+                View certificate →
+            </span>
+        </a>
+
+        <!-- Certificate 3 -->
+
+        <a
+            href="src\Fd_cert_Alex_Cooper.pdf"
+            class="cert-option"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <strong>
+                Firedog University, Car Installer Program
+            </strong>
+
+            <span>
+                View certificate →
+            </span>
+        </a>
+
+    </div>
+
+</div>
+
+                    <a
+                        href="#experience"
+                        class="hero-button"
+                    >
+                        View Experience
+                    </a>
+
+
+                    <label
+                        for="contact-toggle"
+                        class="hero-button"
+                    >
+                        Contact Me
+                    </label>
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =============================================
+                 PROFILE
+                 ============================================= -->
+
+            <div class="hero-profile">
+
+
+                <div class="hero-photo-wrapper">
+
+                    <img
+                        src="src/headshot_AC_SR.png"
+                        alt="Alex Cooper"
+                        class="headshot"
+                    >
+
+                </div>
+
+
+                <div class="hero-profile-name">
+                    Alex Cooper
+                </div>
+
+
+                <div class="hero-profile-role">
+                    Supply Chain<br>
+                    Leadership and Inventory Specialist
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================================
+             ABOUT
+             ================================================= -->
+
+        <section
+            class="section"
+            id="about"
+        >
+
+
+            
+<div class="section-heading">
+
+    <div>
+
+        <div class="section-label">
+            About
+        </div>
+
+        <h2>
+            More than inventory.
+        </h2>
+
+    </div>
+
+    <p>
+        My background spans inventory control, supply chain
+        operations, relationship building, procurement,
+        hands-on work, and problem-solving.
+    </p>
+
+</div>
+
+
+<div class="about-grid">
+
+    <div class="about-copy">
+
+        <p>
+            My work focuses on the relationship between
+            inventory, operations, and the people who keep
+            a supply chain moving. I enjoy understanding
+            how materials, information, and resources flow
+            through an organization and identifying ways
+            to make those processes more efficient.
+        </p>
+
+        <p>
+            My experience spans inventory management,
+            procurement, customer service, and hands-on
+            operational work. These experiences have
+            taught me the importance of organization,
+            attention to detail, accurate information,
+            and clear communication when managing
+            inventory and supporting day-to-day operations.
+        </p>
+
+        <p>
+            I bring a practical approach to problem-solving,
+            with an emphasis on understanding the issue,
+            identifying its cause, and working toward
+            a reliable solution. Whether coordinating
+            with others, managing inventory, or addressing
+            an operational challenge, I value accuracy,
+            accountability, and getting the job done right.
+        </p>
+
+        <p>
+            Beyond inventory control, I am interested in
+            the systems and processes that support supply
+            chain operations. I enjoy learning how different
+            parts of an organization work together and
+            finding opportunities to improve efficiency,
+            communication, and the way work gets done.
+        </p>
+
+    </div>
+
+</div>
+
+
+                <!-- =========================================
+                     CURRENT FOCUS
+                     ========================================= -->
+
+                <div class="focus-panel">
+
+
+                    <div class="focus-panel-title">
+                        Areas of Focus
+                    </div>
+
+
+                    <div class="focus-list">
+
+
+                        <div class="focus-item">
+
+                            <span class="focus-dot"></span>
+
+                            Leadership
+
+                        </div>
+
+
+                        <div class="focus-item">
+
+                            <span class="focus-dot"></span>
+
+                            Inventory Control
+
+                        </div>
+
+
+                        <div class="focus-item">
+
+                            <span class="focus-dot"></span>
+
+                            Client/Customer Relationships
+
+                        </div>
+
+
+                        <div class="focus-item">
+
+                            <span class="focus-dot"></span>
+
+                            Data Analysis
+
+                        </div>
+
+
+                        <div class="focus-item">
+
+                            <span class="focus-dot"></span>
+
+                            Documentation
+
+                        </div>
+
+
+                        <div class="focus-item">
+
+                            <span class="focus-dot"></span>
+
+                            Hands-On Technical Work
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================================
+             EXPERIENCE TIMELINE
+             ================================================= -->
+
+        <section
+            class="section"
+            id="experience"
+        >
+
+
+            <div class="section-heading">
+
+
+                <div>
+
+                    <div class="section-label">
+                        Experience
+                    </div>
+
+                    <h2>
+                        The path so far.
+                    </h2>
+
+                </div>
+
+
+                <p>
+    A progression from front-line management to an
+    administrative-level specialist. A difficult career
+    setback during the 2008 recession led to a renewed
+    commitment to professional growth and success.
+</p>
+
+
+            </div>
+
+
+            <div class="timeline">
+
+                <div class="timeline-item">
+
+
+                    <div class="timeline-marker"></div>
+
+
+                    <div class="timeline-date">
+                        May 2002 —<br>
+                        September 2004
+                    </div>
+
+
+                    <div class="timeline-content">
+
+                        <h3>
+                            Service Mechanic Manager
+                        </h3>
+
+                        <div class="timeline-company">
+                            Triangle Lube
+                        </div>
+
+                        <p>
+    Built an early foundation in administrative duties,
+    customer communication, inventory and accounting,
+    process execution, and working effectively in a
+    fast-paced operational environment.
+</p>
+
+                    </div>
+
+
+                </div>
+
+                <div class="timeline-item">
+
+
+                    <div class="timeline-marker"></div>
+
+
+                    <div class="timeline-date">
+                        November 2004 —<br>
+                        March 2008
+                    </div>
+
+
+                    <div class="timeline-content">
+
+                        <h3>
+                            Installation Technician (Supervisor)
+                        </h3>
+
+                        <div class="timeline-company">
+                            Circuit City
+                        </div>
+
+                        <p>
+    Worked with growing technology communities to
+    deliver product sales and installations of vehicle
+    and home electronic systems. Utilized professional
+    documentation to log market trends and milestones.
+    Collaborated with store leadership and local
+    authorities to ensure product availability.
+</p>
+
+                    </div>
+
+
+                </div>
+
+                <div class="timeline-item">
+
+
+                    <div class="timeline-marker"></div>
+
+
+                    <div class="timeline-date">
+                        2008 —<br>
+                        2014
+                    </div>
+
+
+                    <div class="timeline-content">
+
+                        <h3>
+                            Packaging Equipment Operator/Material Handeler
+                        </h3>
+
+                        <div class="timeline-company">
+                            Y&S Candies (The Hershey Company)
+                        </div>
+
+                        <p>
+    After a strong career start in leadership, the
+    recession reset my career trajectory. I worked in
+    a fast-paced production environment, using heavy
+    machinery to safely and effectively unload, pick,
+    stage, and load products.
+</p>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- =========================================
+                     SME
+                     ========================================= -->
+
+                <div class="timeline-item">
+
+
+                    <div class="timeline-marker"></div>
+
+
+                    <div class="timeline-date">
+                        2014 —<br>
+                        2017
+                    </div>
+
+
+                    <div class="timeline-content">
+
+                        <h3>
+                            Extrusion Operator & SME Trainer
+                        </h3>
+
+                        <div class="timeline-company">
+                            Y&S Candies (The Hershey Company)
+                        </div>
+
+                        <p>
+    This role allowed me to wear two hats and learn
+    new skills while sharpening those I already
+    possessed. As an operator, I worked on the line,
+    utilizing a Microsoft system to analyze data and
+    ensure successful production. As a trainer, I
+    mentored new hires for a month, ensuring they
+    were properly trained to succeed in their roles.
+</p>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- =========================================
+                     CAMPUS CONNECT
+                     ========================================= -->
+
+                <div class="timeline-item">
+
+
+                    <div class="timeline-marker"></div>
+
+
+                    <div class="timeline-date">
+                        2017 —<br>
+                        2020
+                    </div>
+
+
+                    <div class="timeline-content">
+
+                        <h3>
+                            Industrial Maintence
+                        </h3>
+
+                        <div class="timeline-company">
+                            Y&S Candies (The Hershey Company)
+                        </div>
+
+                        <p>
+    Returned to my maintenance roots, initially
+    established at Triangle, operating heavy machinery
+    to ensure the plant could operate under appropriate
+    conditions.
+</p>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- =========================================
+                     L'SPACE
+                     ========================================= -->
+
+                <div class="timeline-item">
+
+
+                    <div class="timeline-marker"></div>
+
+
+                    <div class="timeline-date">
+                        2020 —<br>
+                        2021
+                    </div>
+
+
+                    <div class="timeline-content">
+
+                        <h3>
+                            Pull-N-Peel Floor Person
+                        </h3>
+
+                        <div class="timeline-company">
+                            Y&S Candies (The Hershey Company)
+                        </div>
+
+                        <p>
+    This role allowed me to get my start in the
+    company's inventory and leadership functions.
+    This opportunity allowed me to manage the floor
+    full-time, ensuring inventory was available for
+    successful production runs while maintaining
+    compliance with production processes, including
+    waste management and employee efficiency.
+</p>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- =========================================
+                     NASA GSFC
+                     ========================================= -->
+
+                <div class="timeline-item">
+
+
+                    <div class="timeline-marker"></div>
+
+
+                    <div class="timeline-date">
+                        2021—<br>
+                        2024
+                    </div>
+
+
+                    <div class="timeline-content">
+
+                        <h3>
+                            Sanitation Management
+                        </h3>
+
+                        <div class="timeline-company">
+                            Y&S Candies
+                        </div>
+
+                        <p>
+    After building my understanding of inventory
+    directly on the floor, I returned to maintenance
+    to oversee other required resources related to
+    cleanliness. Here, I began networking with
+    high-level company professionals.
+</p>
+
+                    </div>
+
+
+                </div>
+
+                <div class="timeline-item">
+
+
+                    <div class="timeline-marker"></div>
+
+
+                    <div class="timeline-date">
+                        2024—<br>
+                        Current
+                    </div>
+
+
+                    <div class="timeline-content">
+
+                        <h3>
+                            Senior Inventory Control Coordinator
+                        </h3>
+
+                        <div class="timeline-company">
+                            Y&S Candies (The Hershey Company)
+                        </div>
+
+                        <p>
+    In my current role, I oversee inventory for the
+    entire plant, working directly with production
+    schedulers and procurement specialists to ensure
+    operational needs are met. This role involves
+    working on the floor to verify products, conducting
+    audits in the office, and visiting other facilities
+    to ensure continuity. I also serve as the primary
+    specialist for SAP S/4HANA.
+</p>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- =========================================
+                     NEXT
+                     ========================================= -->
+
+                <div class="timeline-item">
+
+
+                    <div class="timeline-marker"></div>
+
+
+                    <div class="timeline-date">
+                        Current —
+                    </div>
+
+
+                    <div class="timeline-content">
+
+                        <h3>
+                            What's Next
+
+                            <span class="timeline-current">
+                                In Progress
+                            </span>
+
+                        </h3>
+
+                        <div class="timeline-company">
+                            The next chapter
+                        </div>
+
+                        <p>
+    While I love what I do, I remain optimistic about
+    what the future holds. I am always looking for
+    opportunities to better myself as a professional
+    and as a person.
+</p>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================================
+             EDUCATION
+             ================================================= -->
+
+        <section
+            class="section"
+            id="education"
+        >
+
+
+            <div class="section-heading">
+
+
+                <div>
+
+                    <div class="section-label">
+                        Education
+                    </div>
+
+                    <h2>
+                        Academic foundation.
+                    </h2>
+
+                </div>
+
+
+                <p>
+                    An invertory speicalist foundation supported by
+                    focused study in leadership, invetory management,
+                    and production processes.
+                </p>
+
+
+            </div>
+
+
+            <div class="education-grid">
+
+                <div class="education-card">
+
+
+                    <div class="education-year">
+                        Summer 2026
+                    </div>
+
+
+                    <h3>
+                        Frontline Manager
+                        Leadership Certificate
+                    </h3>
+
+
+                    <p>
+                        University of Denver
+                    </p>
+
+
+                </div>
+
+                <div class="education-card">
+
+
+                    <div class="education-year">
+                        Spring 2024
+                    </div>
+
+
+                    <h3>
+                        Inventory Management 
+                        Foundations Certificate
+                    </h3>
+
+
+                    <p>
+                        LinkedIn Learning
+                    </p>
+
+
+                </div>
+
+                <div class="education-card">
+
+
+                    <div class="education-year">
+                        Summer 2006
+                    </div>
+
+
+                    <h3>
+                        The Car Installer Certification Program
+                    </h3>
+
+
+                    <p>
+                        Firedog University
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        
+<!-- =================================================
+     CAPABILITIES
+     ================================================= -->
+
+<section
+    class="section"
+    id="capabilities"
+>
+
+    <div class="section-heading">
+
+        <div>
+
+            <div class="section-label">
+                Capabilities
+            </div>
+
+            <h2>
+                Where I work best.
+            </h2>
+
+        </div>
+
+        <p>
+            My strengths lie in managing people,
+            maintaining inventory accuracy, coordinating
+            operations, and working hands-on with
+            equipment and systems.
+        </p>
+
+    </div>
+
+
+    <div class="capability-grid">
+
+
+        <div class="capability">
+
+            <div class="capability-number">
+                01
+            </div>
+
+            <h3>
+                Leadership
+            </h3>
+
+            <p>
+                Personnel management, employee training,
+                team communication, and stakeholder
+                requirements.
+            </p>
+
+        </div>
+
+
+        <div class="capability">
+
+            <div class="capability-number">
+                02
+            </div>
+
+            <h3>
+                Inventory Control
+            </h3>
+
+            <p>
+                SAP S/4HANA, Microsoft Excel, inventory
+                tracking, data organization, and
+                reporting.
+            </p>
+
+        </div>
+
+
+        <div class="capability">
+
+            <div class="capability-number">
+                03
+            </div>
+
+            <h3>
+                Supply Chain Operations
+            </h3>
+
+            <p>
+                Procurement, resource coordination,
+                operational workflows, and supporting
+                the movement of materials.
+            </p>
+
+        </div>
+
+
+        <div class="capability">
+
+            <div class="capability-number">
+                04
+            </div>
+
+            <h3>
+                Technical Work
+            </h3>
+
+            <p>
+                Electronic installations, machine
+                operation, equipment troubleshooting,
+                and hands-on technical support.
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+        <!-- =================================================
+             RESUME CTA
+             ================================================= -->
+
+        <section class="resume-section">
+
+
+            <div>
+
+                <h3>
+                    Want the condensed version?
+                </h3>
+
+                <p>
+                    View my resume for a more traditional
+                    overview of my education, experience,
+                    and technical background.
+                </p>
+
+            </div>
+
+
+            <div class="resume-actions">
+
+
+                <a
+                    href="src/Alex_Cooper_Resume.pdf"
+                    target="_blank"
+                    class="resume-button"
+                >
+                    View Resume
+                </a>
+
+
+                <a
+                    href="src/Alex_Cooper_Resume.pdf"
+                    download
+                    class="resume-button secondary"
+                >
+                    Download
+                </a>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================================
+             FIND ME
+             ================================================= -->
+
+        <section
+            class="section find-section"
+            id="connect"
+        >
+
+
+            <div class="section-label">
+                Connect
+            </div>
+
+
+            <h2>
+                Find me.
+            </h2>
+
+
+            <p>
+                Whether you're interested in my supply chain work,
+                education path, or simply want to get in touch, these
+                are the best places to reach me.
+            </p>
+
+
+            <div class="find-links">
+
+
+                <a
+                    href="https://www.linkedin.com/in/amcoopersr/"
+                    class="find-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    LinkedIn
+                </a>
+
+
+                <label
+                    for="contact-toggle"
+                    class="find-link"
+                >
+                    Contact
+                </label>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer class="site-footer">
+
+
+        <div>
+            Alex Cooper
+        </div>
+
+
+        <div>
+            Supply Chain
+            • Leadership
+            • Inventory Management
+            • Analytics
+        </div>
+
+
+        <div>
+
+            <label
+                for="contact-toggle"
+                class="footer-contact"
+            >
+                Contact
+            </label>
+
+            &nbsp;•&nbsp;
+
+            <a
+                href="https://www.linkedin.com/in/amcoopersr/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                LinkedIn
+            </a>
+
+        </div>
+
+
+        <div>
+            © 2026 Alex Cooper
+        </div>
+
+
+    </footer>
+
+
+</div>
+
+
+<!-- =========================================================
+     CONTACT CHECKBOX
+     ========================================================= -->
+
+<input
+    type="checkbox"
+    id="contact-toggle"
+    class="contact-checkbox"
+>
+
+
+<!-- =========================================================
+     CONTACT OVERLAY
+     ========================================================= -->
+
+<label
+    for="contact-toggle"
+    class="contact-overlay"
+></label>
+
+
+<!-- =========================================================
+     CONTACT PANEL
+     ========================================================= -->
+
+<div class="contact-panel">
+
+
+    <div class="contact-panel-header">
+
+
+        <div>
+
+            <div class="contact-label">
+                GET IN TOUCH
+            </div>
+
+            <h2>
+                Let's Connect
+            </h2>
+
+        </div>
+
+
+        <label
+            for="contact-toggle"
+            class="contact-close"
+            aria-label="Close contact panel"
+        >
+            ×
+        </label>
+
+
+    </div>
+
+
+    <p class="contact-description">
+
+        Interested in my work, education, or professional
+        experience? You can find me through the links below
+        or reach out directly.
+
+    </p>
+
+
+    <div class="contact-options">
+
+
+        <!-- LinkedIn -->
+
+        <a
+            href="https://www.linkedin.com/in/amcoopersr/"
+            class="contact-option"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+
+            <strong>
+                LinkedIn
+            </strong>
+
+            <span>
+                Professional profile →
+            </span>
+
+        </a>
+        <!-- Email -->
+
+        <a
+            href="mailto:alexmcoopersr@gmail.com"
+            class="contact-option"
+        >
+
+            <strong>
+                Email
+            </strong>
+
+            <span>
+                Send me a message →
+            </span>
+
+        </a>
+
+
+    </div>
+
+
+    <!-- =====================================================
+         RESUME
+         ===================================================== -->
+
+    <div class="contact-resume">
+
+
+        <div class="contact-resume-info">
+
+            <strong>
+                Want the full picture?
+            </strong>
+
+            <span>
+                View or download my resume.
+            </span>
+
+        </div>
+
+
+        <div class="contact-resume-buttons">
+
+
+            <a
+                href="src/Alex_Cooper_Resume.pdf"
+                target="_blank"
+                class="contact-resume-button"
+            >
+                View
+            </a>
+
+
+            <a
+                href="src/Alex_Cooper_Resume.pdf"
+                download
+                class="contact-resume-button secondary"
+            >
+                Download
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
